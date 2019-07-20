@@ -6,9 +6,10 @@ import router from './router/index.js'
 import store from './store/store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import VueBetterScroll from 'vue2-better-scroll'
 
 Vue.config.productionTip = false
-Vue.use(VueAwesomeSwiper)
+Vue.use(VueAwesomeSwiper,VueBetterScroll)
 
 /* eslint-disable no-new */
 new Vue({
@@ -18,3 +19,9 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+export default {
+  components: {
+    VueBetterScroll
+  }
+}

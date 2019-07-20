@@ -8,11 +8,6 @@
 import searchBox from '@/components/search/searchBox'
 export default {
   name: 'Header',
-  data() {
-    return {
-      
-    }
-  },
   components:{
     searchBox
   }

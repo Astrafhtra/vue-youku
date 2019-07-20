@@ -1,7 +1,5 @@
 <template>
-  <div>
-    huiyuan
-  </div>
+  
 </template>
 
 <script>

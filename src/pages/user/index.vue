@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="header">
-      <img src="@/images/logo.png" alt width="126px" height="26px" />
+      <div class="log" @click="showHeader">
+          <img src="@/images/logo.png" alt width="126px" height="26px" />
+      </div>
       <div class="pd">
         <img src="@/images/pindao.png" alt width="16px" height="16px" />
         <span>频道</span>
@@ -42,11 +44,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
       count: 1
     };
+  },
+  computed: {
+    ...mapGetters([
+      'DisplayHeader'
+    ])
   },
   methods: {
     change1() {
@@ -62,10 +70,13 @@ export default {
         document.getElementById("id2").style.color = "red";
         document.getElementById("id1").style.color = "black";
       }
+    },
+    showHeader(){
+      this.$store.dispatch('setShowHeader',true)
+      this.$router.push('/')
     }
   },
   created() {
-    // console.log(this.count)
   }
 };
 </script>

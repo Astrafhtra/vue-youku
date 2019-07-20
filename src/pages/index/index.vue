@@ -34,7 +34,7 @@
         </ul>
       </div>
       <div class="btn">
-        <div class="btn1">
+        <div class="btn1" @click="navTojuji">
           <div class="text">进入剧集频道</div>
           <img src="@/images/jiantou.png" alt="">
         </div>
@@ -138,7 +138,12 @@ export default {
   components: {
     "v-swiper": Swiper,
     "v-movie":movie
-  }
+  },
+  methods: {
+    navTojuji(){
+      this.$router.replace('/tv')
+    }
+  },
 };
 </script>
 
@@ -168,9 +173,10 @@ export default {
 }
 .name {
   font-weight: 600;
+  padding-left: 9px;
 }
 .desc {
-  /* padding-left: 5px; */
+  padding-left: 9px;
   font-size: 13px;
   color: #999;
   margin-bottom: 20px;

@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="header" v-show="Show">
+  <div class="wrapper">
+    <div class="header" v-show="DisplayHeader">
       <v-header></v-header>
     </div>
     <keep-alive>
@@ -10,30 +10,41 @@
 </template>
 
 <script>
-import header from '@/components/Header/header'
+import header from "@/components/Header/header";
+// import BScroll from "better-scroll";
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      Show:true
-    }
+      // DisplayHeader:true
+    };
   },
-  components:{
-    "v-header":header
+  components: {
+    "v-header": header
+  },
+  computed: {
+    ...mapGetters([
+      'DisplayHeader'
+    ])
+  },
+  created() {
+    this.$store.dispatch('setShowHeader',true)
   }
 };
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
 }
-html,body{
+html,
+body {
   width: 100%;
   height: 100%;
   /* top: 0;left: 0; */
 }
-ul li{
+ul li {
   list-style: none;
 }
 .tab {

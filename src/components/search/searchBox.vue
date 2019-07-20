@@ -1,17 +1,22 @@
 <template>
-<div class="yk-header"  v-show="DisplayHeader">
+<div class="yk-header">
   <div class="yk-header-container">
-      <img src="@/images/logo2.png" alt="" class="icon">
+    <!-- 优酷logo -->
+    <a href="#">
+      <img src="https://gw.alicdn.com/tfs/TB1sG87RsfpK1RjSZFOXXa6nFXa-168-34.png" alt="" class="icon">
+    </a>
+    <!-- 搜索框 -->
     <div class="yk-search-container">
       <!-- 输入框只要输入的值变化了就会触发 input 调用 search 数据实时获取通过 event.currentTarget.value 获取到 -->
       <input type="text" id="yk-search-input" placeholder="aaaaaa" @click="Search"  @keyup.enter="search" @input="search($event)" />
       <img src="https://img.alicdn.com/tfs/TB15zSoX21TBuNjy0FjXXajyXXa-48-48.png" alt="" class="search-logo">
     </div>
-    <div @click="Displayheader">
-    <router-link to="/user" >
-      <img src="@/images/my.png" alt="" class="userIcon">
+    <!-- 用户icon -->
+    <router-link to="/user">
+      <div @click="Displayheader">
+        <img src="@/images/my.png" alt="" class="userIcon">
+      </div>
     </router-link>
-    </div>
   </div>
   <search-list v-show="DisplayList"></search-list>
   <div class="yk-nav">
@@ -82,42 +87,37 @@
 <script>
 import Vue from 'vue'
 import searchList from './searchlist'
-import { mapGetters } from 'vuex'
-export default {
+import { mapGetters,mapMutations,mapActions } from 'vuex'
+import { MiXin } from '@/common/mixin.js'
+export default { 
   data () {
     return {
-      // DisplayHeader:true
     }
   },
+  mixins:[MiXin],
   computed: {
     ...mapGetters([
-      'DisplayList',
-      'total',
+      'searchValue',
       'DisplayHeader'
     ]),
   },
   methods:{
-    Search () {
-      this.$store.dispatch('setShowSearchList',true)
-    },
-    disPlayTotal () {
-      this.$store.dispatch('setShowTotalList',true)
-    },
-    hideTotal () {
-      this.$store.dispatch('setShowTotalList',false)
+    Displayheader(){
+      // this.setShowHeader(false)
+      this.$store.dispatch('setShowHeader',false)
     },
     search(event){
-	    console.log(event.currentTarget.value)
+      // console.log(event.currentTarget.value)
+      this.getSearchValue(event.currentTarget.value)
     },
-    Displayheader(){
-      this.$store.dispatch('setShowHeader',false)
-    }
-  },
-  created() {
+    ...mapActions([
+      'getSearchValue',
+      // 'setShowHeader'
+    ])
   },
   components:{
     'search-list': searchList
-  },
+  }
 }
 </script>
 
@@ -128,12 +128,12 @@ export default {
   height: 2.9333rem;
 }
 .icon{
+  width: 5.6rem;
+  height: 1.1rem;
   position: absolute;
   top: 50%;
   transform: translate(0,-50%);
   left: 1rem;
-  width: 84px;
-  height: 16.5px;
 }
 .yk-search-container{
   position: absolute;
@@ -187,8 +187,8 @@ export default {
   font-size: 1.0666rem;
   height: 2.6rem;
   line-height: 1.333rem;
-  margin-left: 0.8rem;
-  margin-right: 0.8rem;
+  margin-left: 0.75rem;
+  margin-right: 1rem;
   white-space: nowrap;
 }
 a{

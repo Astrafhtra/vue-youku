@@ -23,10 +23,12 @@
       </ul>
     </div>
     <div class="btn">
-        <div class="btn1">
-          <div class="text">进入电影频道</div>
+        <div class="btn1" @click="navToMovie">
+          <div class="text">
+            进入电影频道
+          </div>
           <img src="@/images/jiantou.png" alt="">
-        </div>
+        </div> 
         <div class="btn2">
           <div class="text">换一换</div>
           <img src="@/images/shuaxin.png" alt="">
@@ -84,7 +86,12 @@ export default {
         },
       ]
     };
-  }
+  },
+  methods: {
+    navToMovie(){
+      this.$router.replace('/movie')
+    }
+  },
 };
 </script>
 
