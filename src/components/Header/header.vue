@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="coName">
     <searchBox></searchBox>
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
+*
+  z-index 1  
 </style>

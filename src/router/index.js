@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import huiyuan from '@/pages/huiyuan/huiyuan'
 import index from '@/pages/index/index'
 import tv from '@/pages/juji/tv'
 import movie from '@/pages/movie/movie'
 import zy from '@/pages/zy/zy'
 import user from '@/pages/user/index'
+import video from '@/pages/video/video'
 
 Vue.use(Router)
 
@@ -15,6 +15,9 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index,
+      childrens:[
+        
+      ]
     },
     {
       path: '/index',
@@ -29,7 +32,12 @@ export default new Router({
     {
       path: '/vip',
       name: 'vip',
-      component: huiyuan,
+      component: () => import('@/pages/vip/vip'),
+    },
+    {
+      path: '/vip-pay',
+      name: 'vip-pay',
+      component: () => import('@/pages/vip/vip-pay'),
     },
     {
       path: '/tv',
@@ -40,6 +48,11 @@ export default new Router({
       path:'/movie',
       name:'movie',
       component:movie
+    },
+    {
+      path:'/video',
+      name:'video',
+      component:video
     },
     {
       path:'/user',

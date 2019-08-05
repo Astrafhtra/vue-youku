@@ -60,4 +60,7 @@ ul li {
 .router-link-exact-active {
   color: rgb(240, 20, 20);
 }
+.header{
+  z-index: 1
+}
 </style>

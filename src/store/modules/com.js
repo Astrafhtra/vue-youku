@@ -6,7 +6,8 @@ const state = {
   whenSearch: '',
   hotkey: '长安十二时辰',
   searchValue: '',
-  DisplayHeader:true
+  DisplayHeader:true,
+  hideSideBar:true,
 }
 
 const mutations = {
@@ -21,7 +22,13 @@ const mutations = {
   },
   [types.GET_SEARCH_VALUE] (state,status) {
     state.searchValue = status
-  }
+  },
+  [types.HIDE_SIDEBAR] (state,status) {
+    state.hideSideBar = status
+  },
+  [types.SHOW_HEADER] (state,status) {
+    state.hideSideBar = status
+  },
 }
 
 const actions = {
@@ -36,6 +43,9 @@ const actions = {
   },
   getSearchValue ({ commit },status) {
     commit(types.GET_SEARCH_VALUE,status)
+  },
+  setHideBar({ commit },status){
+    commit(types.HIDE_SIDEBAR,status)
   }
 }
 
@@ -58,6 +68,7 @@ const getters = {
   },
   searchValue: state => state.searchValue,
   DisplayHeader:state=>state.DisplayHeader,
+  hideSideBar:state=>state.hideSideBar
 }
 
 export default {

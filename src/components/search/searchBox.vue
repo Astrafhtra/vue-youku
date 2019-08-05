@@ -1,5 +1,5 @@
 <template>
-<div class="yk-header">
+<div class="yk-header" v-show="$route.name !== 'user'">
   <div class="yk-header-container">
     <!-- 优酷logo -->
     <a href="#">
@@ -12,11 +12,9 @@
       <img src="https://img.alicdn.com/tfs/TB15zSoX21TBuNjy0FjXXajyXXa-48-48.png" alt="" class="search-logo">
     </div>
     <!-- 用户icon -->
-    <router-link to="/user">
-      <div @click="Displayheader">
+        <div @click="Displayheader">
         <img src="@/images/my.png" alt="" class="userIcon">
       </div>
-    </router-link>
   </div>
   <search-list v-show="DisplayList"></search-list>
   <div class="yk-nav">
@@ -103,8 +101,9 @@ export default {
   },
   methods:{
     Displayheader(){
-      // this.setShowHeader(false)
-      this.$store.dispatch('setShowHeader',false)
+      console.log('---')
+     this.$router.push({name:'user'})
+    //  this.$router.push({path:'user'})
     },
     search(event){
       // console.log(event.currentTarget.value)

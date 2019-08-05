@@ -4,7 +4,7 @@
       <div class="log" @click="showHeader">
           <img src="@/images/logo.png" alt width="126px" height="26px" />
       </div>
-      <div class="pd">
+      <div class="pd" @click="Tovideo">
         <img src="@/images/pindao.png" alt width="16px" height="16px" />
         <span>频道</span>
       </div>
@@ -72,8 +72,11 @@ export default {
       }
     },
     showHeader(){
-      this.$store.dispatch('setShowHeader',true)
       this.$router.push('/')
+    },
+    Tovideo(){
+      // this.$store.dispatch('setShowHeader',false)
+      this.$router.push('/video')
     }
   },
   created() {
